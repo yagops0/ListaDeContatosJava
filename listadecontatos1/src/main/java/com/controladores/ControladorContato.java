@@ -24,6 +24,10 @@ public class ControladorContato
 {
     List<Contato> listaContatos = new ArrayList<>();
 
+    public List<Contato> getListaContatos() {
+        return listaContatos;
+    }
+
     public boolean existeContato(String apelido)
     {
         for (Contato c : this.listaContatos) 
@@ -67,4 +71,6 @@ public class ControladorContato
         }
 
     }
+
+    
 }

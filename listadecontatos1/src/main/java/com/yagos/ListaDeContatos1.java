@@ -41,14 +41,19 @@ public class ListaDeContatos1
         }
     }
 
+    private static void frufru()
+    {
+        System.out.println("========================================================================");
+    }
+
     public static void main( String[] args )
     {
-        Contato c = new Contato();
-        List<Contato> contatos = new ArrayList<>();
+        //List<Contato> contatos = new ArrayList<>();
         //String nome, apelido, telefon;
         ControladorContato cc = new ControladorContato();
         Scanner ent = new Scanner(System.in);
         int escolha;
+        String nome, telefone, apelido;
 
         try 
         {
@@ -69,31 +74,46 @@ public class ListaDeContatos1
                 escolha = ent.nextInt();
                 ent.nextLine();
                 espera();
+                char continuar;
                 switch(escolha)
                 {
                     case 1:
                     {
+
                         System.out.println("ADICIONAR CONTATO");
-                        System.out.print("Nome: ");
-                        c.setNome(ent.nextLine());
+                        frufru();
 
-                        System.out.print("Apelido: ");
-                        c.setApelido(ent.nextLine());
+                        System.out.println();
 
-                        System.out.print("Telefone: ");
-                        c.setTelefone(ent.nextLine());
-
-                        contatos.add(c);
-
-                        if(cc.incluirContato(c))
+                        do
                         {
-                            System.out.println("Contato adicionado com sucesso!");
-                            
-                        }
-                        else
-                        {
-                            System.out.println("Sinto muito não foi possível adiconar o contato.");
-                        }
+                            System.out.print("Nome: ");
+                            nome = ent.nextLine();
+
+                            System.out.print("Apelido: ");
+                            apelido = ent.nextLine();
+
+                            System.out.print("Telefone: ");
+                            telefone = ent.nextLine();
+                            frufru();
+
+                            Contato c = new Contato(nome, apelido, telefone);
+
+                            if(cc.incluirContato(c))
+                            {
+                                System.out.println("Contato adicionado com sucesso!");
+                                
+                            }
+                            else
+                            {
+                                
+                                System.out.println("Sinto muito não foi possível adiconar o contato.");
+                            }
+
+                            System.out.println("Deseja adicionar mais contatos (S/N)?");
+                            continuar = ent.nextLine().charAt(0);
+
+                        }while(continuar == 's');
 
                         break;
                     }
@@ -132,6 +152,13 @@ public class ListaDeContatos1
 
 
 
+            }
+
+            for(Contato c : cc.getListaContatos())
+            {
+                System.out.println("Nome: " + c.getNome());
+                System.out.println("Apelido: " + c.getApelido());
+                System.out.println("Telefone: " + c.getTelefone());
             }
         } 
         catch (Exception e) 
