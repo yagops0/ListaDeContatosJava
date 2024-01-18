@@ -79,7 +79,7 @@ public class ListaDeContatos1
                 {
                     case 1:
                     {
-
+                        frufru();
                         System.out.println("ADICIONAR CONTATO");
                         frufru();
 
@@ -97,7 +97,7 @@ public class ListaDeContatos1
                             telefone = ent.nextLine();
                             frufru();
 
-                            Contato c = new Contato(nome, apelido, telefone);
+                            Contato c = new Contato(apelido, nome, telefone);
 
                             if(cc.incluirContato(c))
                             {
@@ -107,7 +107,7 @@ public class ListaDeContatos1
                             else
                             {
                                 
-                                System.out.println("Sinto muito não foi possível adiconar o contato.");
+                                System.out.println("Sinto muito não foi possível adiconar o contato. Já existe um contato com esse apelido.");
                             }
 
                             System.out.println("Deseja adicionar mais contatos (S/N)?");
@@ -119,7 +119,68 @@ public class ListaDeContatos1
                     }
                     case 2:
                     {
+                        frufru();
+                        System.out.println("ALTERAR CONTATO");
+                        frufru();
+                        do 
+                        {
+                            System.out.print("Digite o apelido do contato para alterá-lo: ");
+                            apelido = ent.nextLine();
+                            espera();
 
+                            for(Contato c : cc.getListaContatos())
+                            {
+                                if(cc.existeContato(apelido))
+                                {
+                                    if(apelido.equals(c.getApelido()))
+                                    {
+                                        if(cc.alterarTelefone(c))
+                                        {
+                                            frufru();
+                                            System.out.println("CONTATO");
+                                            System.out.println(c.getApelido());
+                                            System.out.println(c.getNome());
+                                            System.out.println(c.getTelefone());
+                                            frufru();
+                                            System.out.println("ALTERAR");
+                                            frufru();
+
+                                            System.out.print("Apelido: ");
+                                            c.setApelido(ent.nextLine());
+
+                                            System.out.print("Nome: ");
+                                            c.setNome(ent.nextLine());
+
+                                            System.out.print("Telefone:");
+                                            c.setTelefone(ent.nextLine());
+
+                                            espera();
+                                            frufru();
+                                            System.out.println("Contato alterado com sucesso!");
+                                            frufru();
+
+                                        }
+                                        else
+                                        {
+                                            System.out.println("Não foi possível alterar o contato.");
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    frufru();
+                                    System.out.println("Não foi possível encontrar um contato com o apelido digitado, por favor digite um apelido válido.");
+                                    frufru();
+                                    break;
+                                }
+                            }
+
+                            
+                            System.out.println("Deseja alterar mais algum contato(S/N)?");
+                            continuar = ent.nextLine().charAt(0);
+                            frufru();
+
+                        } while (continuar == 's');
                         break;
                     }
                     case 3:
@@ -156,8 +217,8 @@ public class ListaDeContatos1
 
             for(Contato c : cc.getListaContatos())
             {
-                System.out.println("Nome: " + c.getNome());
                 System.out.println("Apelido: " + c.getApelido());
+                System.out.println("Nome: " + c.getNome());
                 System.out.println("Telefone: " + c.getTelefone());
             }
         } 

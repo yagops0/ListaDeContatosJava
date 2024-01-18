@@ -2,16 +2,16 @@ package com.classes;
 
 public class Contato 
 {
-    private String nome;
     private String apelido;
+    private String nome;
     private String telefone;
 
     
+    
 
-
-    public Contato(String nome, String apelido, String telefone) {
-        this.nome = nome;
+    public Contato(String apelido, String nome, String telefone) {
         this.apelido = apelido;
+        this.nome = nome;
         this.telefone = telefone;
     }
 
