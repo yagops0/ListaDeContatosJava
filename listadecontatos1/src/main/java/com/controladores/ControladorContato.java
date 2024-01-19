@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.classes.Contato;
 
-/*  Na opção de alterar telefone, o programa deve pedir
-o apelido do contato e procurá-lo na lista e, encontrando o contato, o programa deve
-solicitar o novo telefone e alterar na lista; caso contrário, o programa deve exibir uma
-mensagem de que o contato não existe. Na opção de excluir o contato, o programa deve
-pedir o apelido do contato e procurá-lo na lista e, encontrando o contato, o programa
-deve excluí-lo da lista; caso não encontre, o programa deve exibir uma mensagem de
-que o contato não existe. Na opção de consultar um contato, o programa deve pedir o
+/*    Na opção de consultar um contato, o programa deve pedir o
 apelido do contato e procurá-lo na lista e, encontrando o contato, o programa deve
 exibir todos os dados do contato; caso não encontre, o programa deve exibir uma
 mensagem de que o contato não existe. Na opção de listar todos os contatos, o
@@ -21,6 +15,11 @@ sair, o programa deve ser encerrado.
 os dados do contato e, se não existir nenhum contato com o apelido digitado, inserir o
 contato na lista; caso contrário, o programa deve exibir uma mensagem de que já existe
 um contato com o mesmo apelido.
+
+- FEITO: Na opção de alterar telefone, o programa deve pedir
+o apelido do contato e procurá-lo na lista e, encontrando o contato, o programa deve
+solicitar o novo telefone e alterar na lista; caso contrário, o programa deve exibir uma
+mensagem de que o contato não existe.
 
 */
 
@@ -93,6 +92,32 @@ public class ControladorContato
             return false;
         }
     }
+
+    public boolean excluirContato(Contato c)
+    {
+
+        if(existeContato(c.getApelido()))
+        {
+            this.listaContatos.remove(retornarIndice(c.getApelido()));
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /*public Contato retornarContato(String apelido)
+    {
+        for(Contato c : listaContatos)
+        {
+            if(apelido.equals(c.getApelido()))
+            {
+                return c;
+            }
+        }
+        return null;
+    }*/
 
     
 }
