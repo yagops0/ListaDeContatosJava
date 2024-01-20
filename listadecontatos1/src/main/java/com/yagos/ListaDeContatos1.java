@@ -41,9 +41,9 @@ public class ListaDeContatos1
         }
     }
 
-    private static void frufru()
+    private static void linhas()
     {
-        System.out.println("========================================================================");
+        System.out.println("=====================================================================");
     }
 
     public static void main( String[] args )
@@ -68,7 +68,7 @@ public class ListaDeContatos1
                 System.out.println("- 4: Consultar Contato");
                 System.out.println("- 5: Listar Contatos");
                 System.out.println("- 6: Sair");
-                System.out.println("========================================================================");
+                System.out.println("=====================================================================");
                 espera();
                 System.out.print("Digite o que deseja fazer: ");
                 escolha = ent.nextInt();
@@ -79,11 +79,9 @@ public class ListaDeContatos1
                 {
                     case 1:
                     {
-                        frufru();
+                        linhas();
                         System.out.println("ADICIONAR CONTATO");
-                        frufru();
-
-                        System.out.println();
+                        linhas();
 
                         do
                         {
@@ -95,23 +93,24 @@ public class ListaDeContatos1
 
                             System.out.print("Telefone: ");
                             telefone = ent.nextLine();
-                            frufru();
+                            linhas();
 
                             Contato c = new Contato(apelido, nome, telefone);
 
                             if(cc.incluirContato(c))
                             {
                                 System.out.println("Contato adicionado com sucesso!");
-                                
                             }
                             else
                             {
-                                
                                 System.out.println("Sinto muito não foi possível adiconar o contato. Já existe um contato com esse apelido.");
                             }
 
+                            linhas();
                             System.out.println("Deseja adicionar mais contatos (S/N)?");
                             continuar = ent.nextLine().charAt(0);
+                            linhas();
+                            espera();
 
                         }while(continuar == 's');
 
@@ -119,9 +118,9 @@ public class ListaDeContatos1
                     }
                     case 2:
                     {
-                        frufru();
+                        linhas();
                         System.out.println("ALTERAR CONTATO");
-                        frufru();
+                        linhas();
 
                         do 
                         {
@@ -137,14 +136,14 @@ public class ListaDeContatos1
                                     {
                                         if(cc.alterarTelefone(c))
                                         {
-                                            frufru();
+                                            linhas();
                                             System.out.println("CONTATO");
                                             System.out.println("Apelido: " + c.getApelido());
                                             System.out.println("Nome: " + c.getNome());
                                             System.out.println("Telefone: " + c.getTelefone());
-                                            frufru();
+                                            linhas();
                                             System.out.println("ALTERAR");
-                                            frufru();
+                                            linhas();
 
                                             System.out.print("Apelido: ");
                                             c.setApelido(ent.nextLine());
@@ -156,9 +155,9 @@ public class ListaDeContatos1
                                             c.setTelefone(ent.nextLine());
 
                                             espera();
-                                            frufru();
+                                            linhas();
                                             System.out.println("Contato alterado com sucesso!");
-                                            frufru();
+                                            linhas();
 
                                         }
                                         else
@@ -169,9 +168,9 @@ public class ListaDeContatos1
                                 }
                                 else
                                 {
-                                    frufru();
+                                    linhas();
                                     System.out.println("Não foi possível encontrar um contato com o apelido digitado, por favor digite um apelido válido.");
-                                    frufru();
+                                    linhas();
                                     break;
                                 }
                             }
@@ -179,16 +178,16 @@ public class ListaDeContatos1
                             
                             System.out.println("Deseja alterar mais algum contato(S/N)?");
                             continuar = ent.nextLine().charAt(0);
-                            frufru();
+                            linhas();
 
                         } while (continuar == 's');
                         break;
                     }
                     case 3:
                     {
-                        frufru();
+                        linhas();
                         System.out.println("EXCLUIR CONTATO");
-                        frufru();
+                        linhas();
 
                         do 
                         {
@@ -202,27 +201,29 @@ public class ListaDeContatos1
                                 {
                                     if(apelido.equals(c.getApelido()))
                                     {
-                                        frufru();
+                                        linhas();
                                         System.out.println("CONTATO");
                                         System.out.println("Apelido: " + c.getApelido());
                                         System.out.println("Nome: " + c.getNome());
                                         System.out.println("Telefone: " + c.getTelefone());
 
-                                        frufru();
+                                        linhas();
                                         System.out.println("Deseja excluir esse contato(S/N)?");
                                         simNao = ent.nextLine().charAt(0);
-                                        frufru();
+                                        linhas();
 
                                         if(simNao == 's')
                                         {
                                             if(cc.excluirContato(c))
                                             {
                                                 System.out.println("Contato excluído com sucesso!");
+                                                linhas();
                                                 break;
                                             }
                                             else
                                             {
                                                 System.out.println("Ocorreu um erro ao excluir o contato.");
+                                                linhas();
                                                 break;
                                             }
                                         }
@@ -248,9 +249,9 @@ public class ListaDeContatos1
                     }
                     case 4:
                     {
-                        frufru();
+                        linhas();
                         System.out.println("CONSULTAR");
-                        frufru();
+                        linhas();
                         do 
                         {
                             System.out.print("Digite o apelido do contato que deseja consultar: ");
@@ -262,26 +263,43 @@ public class ListaDeContatos1
                                 {
                                     if(apelido.equals(c.getApelido()))
                                     {
+                                        linhas();
                                         System.out.println("Apelido: " + c.getApelido());
                                         System.out.println("Nome: " + c.getNome());
                                         System.out.println("Telefone: " + c.getTelefone());
+                                        linhas();
                                     }
                                 }
                                 else
                                 {
                                     System.out.println("Não foi possível encontrar um a contato com esse apelido.");
+                                    break;
                                 }
                                    
                             }
                             System.out.println("Deseja consultar mais algum contato(S/N)?");
                             continuar = ent.nextLine().charAt(0);
+                            linhas();
 
                         } while (continuar == 's');
                         break;
                     }
                     case 5:
                     {
+                        linhas();
+                        System.out.println("CONTATOS");
+                        linhas();
 
+                        for(Contato c : cc.getListaContatos())
+                        {
+                            System.out.println("Apelido: " + c.getApelido());
+                            System.out.println("Nome: " + c.getNome());
+                            System.out.println("Telefone: " + c.getTelefone());
+                            linhas();
+                            espera();
+                        }
+
+                        espera();
                         break;
                     }
                 }
@@ -289,6 +307,11 @@ public class ListaDeContatos1
                 
                 if(escolha == 6)
                 {
+                    espera();
+                    linhas();
+                    System.out.println("Fechando o programa...");
+                    linhas();
+                    espera();
                     break;
                 }
 
@@ -302,12 +325,6 @@ public class ListaDeContatos1
 
             }
 
-            for(Contato c : cc.getListaContatos())
-            {
-                System.out.println("Apelido: " + c.getApelido());
-                System.out.println("Nome: " + c.getNome());
-                System.out.println("Telefone: " + c.getTelefone());
-            }
         } 
         catch (Exception e) 
         {
